@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Item {
 
+    private String id;
     private String barcode;
     private String name;
     private String unit;
@@ -20,6 +21,12 @@ public class Item {
         this.setUnit(unit);
         this.setPrice(price);
         this.generatePromotions();
+    }
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName(){
