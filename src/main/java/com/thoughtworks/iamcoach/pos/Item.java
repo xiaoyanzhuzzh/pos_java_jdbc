@@ -3,6 +3,7 @@ package com.thoughtworks.iamcoach.pos;
 import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Item {
 
@@ -11,6 +12,9 @@ public class Item {
     private String name;
     private String unit;
     private double price;
+
+    private List<Promotion> promotionList = new ArrayList<Promotion>();
+
     private ArrayList<String> promotion = new ArrayList<String>();
     private ArrayList<String> promotionText = new ArrayList<String>();
 
