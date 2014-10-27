@@ -22,7 +22,7 @@ public class Item {
 
     }
 
-    public Item(String barcode, String name, String unit, double price){
+    public Item(String id, String barcode, String name, String unit, double price){
         this.setBarcode(barcode);
         this.setName(name);
         this.setUnit(unit);
@@ -30,7 +30,7 @@ public class Item {
         this.generatePromotions();
     }
 
-    public Item(String barcode, String id, String name, double price, String unit, List<Promotion> promotionList) {
+    public Item(String id, String barcode, String name, double price, String unit, List<Promotion> promotionList) {
         this.barcode = barcode;
         this.id = id;
         this.name = name;
