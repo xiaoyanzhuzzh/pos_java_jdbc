@@ -8,10 +8,11 @@ public class CartItem extends Item{
     private double num;
 
     public CartItem(Item item, double num){
-        super(item.getBarcode(), item.getName(), item.getUnit(), item.getPrice());
+        super(item.getId(), item.getBarcode(), item.getName(), item.getUnit(), item.getPrice());
         this.setNum(num);
 
     }
+    public CartItem(){}
 
     public double getNum(){
         return this.num;
@@ -24,7 +25,7 @@ public class CartItem extends Item{
         ArrayList<Double> allSubTotals = new ArrayList<Double>();
         PromotionCalculator promotionCalculator = new PromotionCalculator();
 
-        Item item = new Item(this.getBarcode(), this.getName(), this.getUnit(), this.getPrice());
+        Item item = new Item(this.getId(), this.getBarcode(), this.getName(), this.getUnit(), this.getPrice());
         CartItem cartItem = new CartItem(item, this.num);
 
         for(int i=0; i<getPromotion().size(); i++){
