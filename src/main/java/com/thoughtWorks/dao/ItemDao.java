@@ -70,7 +70,7 @@ public class ItemDao implements ItemDaoImpl {
     public void insertItem(Item item) {
         String sql = "insert into items values(null, '"+item.getBarcode()+
                 "','"+item.getName()+"','"+item.getUnit()+"', "+item.getPrice()+")";
-        Connection connection = dbUtil.getConnection();
+        Connection connection = itemConnectionUtil.getConnection();
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -82,7 +82,7 @@ public class ItemDao implements ItemDaoImpl {
                 System.out.println("插入失败");
             }
             statement.close();
-            dbUtil.closeConnection();
+            itemConnectionUtil.closeConnection();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -90,7 +90,24 @@ public class ItemDao implements ItemDaoImpl {
 
     @Override
     public void deleteItemById(int id) {
+        String sql = "delete from items where id = '"+id+"'";
+        Connection connection = itemConnectionUtil.getConnection();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
 
+            int result = statement.executeUpdate(sql);
+            if(result > 0){
+                System.out.println("删除成功");
+            }
+            else{
+                System.out.println("删除失败");
+            }
+            statement.close();
+            itemConnectionUtil.closeConnection();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
