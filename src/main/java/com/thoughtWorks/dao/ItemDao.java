@@ -112,6 +112,25 @@ public class ItemDao implements ItemDaoImpl {
 
     @Override
     public void updateItem(Item item) {
+        String sql = "update items set barcode = '"+item.getBarcode()+"', name = '"+item.getName()
+                +"',unit = '"+item.getUnit()+"' ,price = '"+item.getPrice()
+                +"' where id = '"+item.getId()+"'";
+        Connection connection = itemConnectionUtil.getConnection();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
 
+            int result = statement.executeUpdate(sql);
+            if(result > 0){
+                System.out.println("更新成功");
+            }
+            else{
+                System.out.println("更新失败");
+            }
+            statement.close();
+            itemConnectionUtil.closeConnection();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
