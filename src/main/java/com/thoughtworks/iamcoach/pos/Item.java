@@ -23,16 +23,16 @@ public class Item {
     }
 
     public Item(String id, String barcode, String name, String unit, double price){
-        this.setBarcode(barcode);
-        this.setName(name);
-        this.setUnit(unit);
-        this.setPrice(price);
-        this.generatePromotions();
+        this.id = id;
+        this.barcode = barcode;
+        this.name = name;
+        this.price = price;
+        this.unit = unit;
     }
 
     public Item(String id, String barcode, String name, double price, String unit, List<Promotion> promotionList) {
-        this.barcode = barcode;
         this.id = id;
+        this.barcode = barcode;
         this.name = name;
         this.price = price;
         this.unit = unit;
