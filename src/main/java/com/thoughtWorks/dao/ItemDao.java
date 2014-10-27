@@ -4,13 +4,11 @@ import com.thoughtworks.iamcoach.pos.Item;
 
 import java.util.List;
 
-/**
- * Created by zhangzhihui on 14-10-27.
- */
 public class ItemDao implements ItemDaoImpl {
     @Override
     public Item getItemById(int id) {
-         
+        Item item = new Item();
+        return item;
     }
 
     @Override
