@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 public class ItemDao implements ItemDaoImpl {
+
     ItemConnectionUtil itemConnectionUtil = new ItemConnectionUtil();
     @Override
     public Item getItemById(int id) {
