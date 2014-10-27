@@ -1,4 +1,5 @@
 package com.thoughtWorks.dao;
 
-public class ItemDao {
+public class ItemDaoImpl {
+
 }
