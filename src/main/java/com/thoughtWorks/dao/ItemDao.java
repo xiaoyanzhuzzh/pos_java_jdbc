@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDao implements ItemDaoImpl {
@@ -42,7 +43,27 @@ public class ItemDao implements ItemDaoImpl {
 
     @Override
     public List<Item> getItems() {
-        return null;
+        List<Item> items = new ArrayList<Item>();
+        String sql = "SELECT * FROM items";
+        Connection connection = itemConnectionUtil.getConnection();
+        Statement statement = null;
+        ResultSet rs = null;
+        try {
+            statement = connection.createStatement();
+            rs = statement.executeQuery(sql);
+            while(rs.next()){
+                items.add(new Item(
+                        rs.getString("id"),
+                        rs.getString("barcode"),
+                        rs.getString("name"),
+                        rs.getString("unit"),
+                        rs.getDouble("price")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return items;
     }
 
     @Override
