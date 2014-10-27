@@ -85,6 +85,17 @@ public class Item {
         return this.promotion;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", barcode='" + barcode + '\'' +
+                ", name='" + name + '\'' +
+                ", unit='" + unit + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
     private void generatePromotions() {
         ArrayList<Path> promotionLocations = new ArrayList<Path>();
         promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "buy_two_get_one_free_promotion.txt"));
