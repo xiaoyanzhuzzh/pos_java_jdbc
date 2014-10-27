@@ -68,7 +68,24 @@ public class ItemDao implements ItemDaoImpl {
 
     @Override
     public void insertItem(Item item) {
-
+        String sql = "insert into items values(null, '"+item.getBarcode()+
+                "','"+item.getName()+"','"+item.getUnit()+"', "+item.getPrice()+")";
+        Connection connection = dbUtil.getConnection();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            int result = statement.executeUpdate(sql);
+            if(result > 0){
+                System.out.println("插入成功");
+            }
+            else{
+                System.out.println("插入失败");
+            }
+            statement.close();
+            dbUtil.closeConnection();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
