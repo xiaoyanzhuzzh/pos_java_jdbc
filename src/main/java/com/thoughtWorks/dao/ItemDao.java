@@ -1,7 +1,7 @@
 package com.thoughtWorks.dao;
 
 import com.thoughtWorks.util.ItemConnectionUtil;
-import com.thoughtworks.iamcoach.pos.Item;
+import com.thoughtWorks.vo.Item;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -39,6 +39,36 @@ public class ItemDao implements ItemDaoImpl {
             e.printStackTrace();
         }
         return item;
+    }
+
+    @Override
+    public Item getItemByBarcode(String barcode){
+        Item item = null;
+        String sql = "SELECT * FROM items WHERE id = '"+barcode+"'";
+        Connection connection = itemConnectionUtil.getConnection();
+        Statement statement = null;
+        ResultSet rs = null;
+
+        try {
+            statement = connection.createStatement();
+            rs = statement.executeQuery(sql);
+            rs.next();
+
+            item = new Item(rs.getString("id"),
+                    rs.getString("barcode"),
+                    rs.getString("name"),
+                    rs.getString("unit"),
+                    rs.getDouble("price")
+            );
+
+            rs.close();
+            statement.close();
+            itemConnectionUtil.closeConnection();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return item;
+
     }
 
     @Override
