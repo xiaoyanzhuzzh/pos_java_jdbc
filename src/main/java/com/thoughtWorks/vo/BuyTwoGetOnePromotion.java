@@ -1,7 +1,13 @@
 package com.thoughtWorks.vo;
 
-/**
- * Created by zhangzhihui on 14-10-29.
- */
-public class BuyTwoGetOnePromotion {
+import com.thoughtworks.iamcoach.pos.CartItem;
+
+public class BuyTwoGetOnePromotion extends Promotion{
+
+    @Override
+    public double caculate(CartItem cartItem, double num) {
+        double promotionNumber = ((int) cartItem.getNum())/3;
+        double actualNumber = cartItem.getNum() - promotionNumber;
+        return actualNumber * cartItem.getPrice();
+    }
 }
