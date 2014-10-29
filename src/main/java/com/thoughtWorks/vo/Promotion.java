@@ -1,5 +1,7 @@
 package com.thoughtWorks.vo;
 
+import com.thoughtworks.iamcoach.pos.CartItem;
+
 abstract class Promotion {
     private String id;
     private String proDesc;
@@ -46,5 +48,5 @@ abstract class Promotion {
                 '}';
     }
 
-    public abstract double caculate(Item item, double num);
+    public abstract double caculate(CartItem cartItem, double num);
 }
