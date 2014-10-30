@@ -1,6 +1,7 @@
-package com.thoughtWorks.dao;
+package com.thoughtworks.iamcoach.pos.dao;
 
-import com.thoughtWorks.util.ItemConnectionUtil;
+import com.thoughtWorks.dao.ItemDaoImpl;
+import com.thoughtworks.iamcoach.pos.util.ItemConnectionUtil;
 import com.thoughtWorks.vo.Item;
 
 import java.sql.Connection;
@@ -44,7 +45,9 @@ public class ItemDao implements ItemDaoImpl {
     @Override
     public Item getItemByBarcode(String barcode){
         Item item = null;
-        String sql = "SELECT * FROM items WHERE id = '"+barcode+"'";
+        String sql = "select * \n" +
+                "  from items i,items_promotions ip \n" +
+                " where i.id = ip.itemId and barcode='"+barcode+"'";
         Connection connection = itemConnectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
@@ -68,7 +71,6 @@ public class ItemDao implements ItemDaoImpl {
             e.printStackTrace();
         }
         return item;
-
     }
 
     @Override
