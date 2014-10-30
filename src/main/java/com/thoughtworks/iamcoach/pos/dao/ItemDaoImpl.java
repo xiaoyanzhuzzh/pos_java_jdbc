@@ -1,7 +1,6 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-
-import com.thoughtWorks.vo.Item;
+import com.thoughtworks.iamcoach.pos.vo.Item;
 
 import java.util.List;
 

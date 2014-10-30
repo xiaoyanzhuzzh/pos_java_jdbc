@@ -1,18 +1,17 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-import com.thoughtWorks.dao.ItemDaoImpl;
 import com.thoughtworks.iamcoach.pos.util.ItemConnectionUtil;
-import com.thoughtWorks.vo.Item;
+import com.thoughtworks.iamcoach.pos.vo.Item;
+import com.thoughtworks.iamcoach.pos.vo.Promotion;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 public class ItemDao implements ItemDaoImpl {
 
     ItemConnectionUtil itemConnectionUtil = new ItemConnectionUtil();
+    private PromotionDaoImpl promotionDao = new PromotionDao();
     @Override
     public Item getItemById(int id) {
         Item item = null;
@@ -51,23 +50,23 @@ public class ItemDao implements ItemDaoImpl {
         Connection connection = itemConnectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
-
         try {
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
             rs.next();
-
-            item = new Item(rs.getString("id"),
-                    rs.getString("barcode"),
-                    rs.getString("name"),
-                    rs.getString("unit"),
-                    rs.getDouble("price")
-            );
-
+            item = new Item(rs.getString("id"),rs.getString("barcode"),rs.getString("name"),rs.getString("unit"),rs.getDouble("price"));
+            int proId = rs.getInt("proId");
+            Promotion promotion = promotionDao.getPromotionById(proId);
+            item.getPromotionList().add(promotion);
+            while(rs.next()){
+                proId = rs.getInt("proId");
+                promotion = promotionDao.getPromotionById(proId);
+                item.getPromotionList().add(promotion);
+            }
             rs.close();
             statement.close();
             itemConnectionUtil.closeConnection();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return item;
