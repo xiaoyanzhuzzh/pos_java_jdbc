@@ -1,7 +1,8 @@
-package com.thoughtWorks.service;
+package com.thoughtworks.iamcoach.pos.service;
 
 /**
  * Created by zhangzhihui on 14-10-29.
  */
 public class CartItem {
+
 }
