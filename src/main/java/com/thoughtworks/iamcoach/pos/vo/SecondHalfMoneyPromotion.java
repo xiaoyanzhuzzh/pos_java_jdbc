@@ -1,4 +1,4 @@
-package com.thoughtWorks.vo;
+package com.thoughtworks.iamcoach.pos.vo;
 
 import com.thoughtworks.iamcoach.pos.CartItem;
 
