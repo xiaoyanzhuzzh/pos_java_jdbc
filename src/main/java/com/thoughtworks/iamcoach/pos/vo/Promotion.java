@@ -1,6 +1,6 @@
 package com.thoughtworks.iamcoach.pos.vo;
 
-abstract class Promotion {
+public abstract class Promotion {
     private String id;
     private String proDesc;
     private int type;
@@ -46,5 +46,5 @@ abstract class Promotion {
                 '}';
     }
 
-    public abstract double caculate(Item item, double num);
+    public abstract double calculate(Item item, double num);
 }
