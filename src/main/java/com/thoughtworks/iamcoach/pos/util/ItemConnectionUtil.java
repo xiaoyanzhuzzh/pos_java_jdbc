@@ -1,4 +1,4 @@
-package com.thoughtWorks.util;
+package com.thoughtworks.iamcoach.pos.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
