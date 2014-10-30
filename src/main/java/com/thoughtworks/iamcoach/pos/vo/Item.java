@@ -1,11 +1,7 @@
 package com.thoughtworks.iamcoach.pos.vo;
 
-import com.thoughtworks.iamcoach.pos.Promotion;
-
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
