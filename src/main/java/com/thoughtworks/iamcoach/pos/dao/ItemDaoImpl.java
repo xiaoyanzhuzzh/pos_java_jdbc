@@ -1,4 +1,4 @@
-package com.thoughtWorks.dao;
+package com.thoughtworks.iamcoach.pos.dao;
 
 
 import com.thoughtWorks.vo.Item;
