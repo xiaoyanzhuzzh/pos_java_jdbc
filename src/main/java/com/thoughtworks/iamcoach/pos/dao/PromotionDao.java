@@ -4,9 +4,6 @@ import com.thoughtworks.iamcoach.pos.vo.Promotion;
 
 import java.util.List;
 
-/**
- * Created by zhangzhihui on 14-10-30.
- */
 public class PromotionDao implements PromotionDaoImpl{
     @Override
     public Promotion getPromotionById(int id) {
