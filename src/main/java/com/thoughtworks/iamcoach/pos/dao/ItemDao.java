@@ -52,13 +52,14 @@ public class ItemDao implements ItemDaoImpl {
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
             rs.next();
+
             item = new Item(rs.getString("id"),rs.getString("barcode"),rs.getString("name"),rs.getString("unit"),rs.getDouble("price"));
-            String proId = rs.getString("proId");
-            Promotion promotion = promotionDao.getPromotionById(proId);
+
+            Promotion promotion = promotionDao.getPromotionById(rs.getString("proId"));
             item.getPromotionList().add(promotion);
+
             while(rs.next()){
-                proId = rs.getString("proId");
-                promotion = promotionDao.getPromotionById(proId);
+                promotion = promotionDao.getPromotionById(rs.getString("proId"));
                 item.getPromotionList().add(promotion);
             }
             rs.close();
