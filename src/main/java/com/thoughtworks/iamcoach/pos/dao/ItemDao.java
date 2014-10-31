@@ -10,13 +10,13 @@ import java.util.List;
 
 public class ItemDao implements ItemDaoImpl {
 
-    ConnectionUtil itemConnectionUtil = new ConnectionUtil();
+    ConnectionUtil connectionUtil = new ConnectionUtil();
     private PromotionDaoImpl promotionDao = new PromotionDao();
     @Override
     public Item getItemById(int id) {
         Item item = null;
         String sql = "SELECT * FROM items WHERE id = '"+id+"'";
-        Connection connection = itemConnectionUtil.getConnection();
+        Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
 
@@ -34,7 +34,7 @@ public class ItemDao implements ItemDaoImpl {
 
             rs.close();
             statement.close();
-            itemConnectionUtil.closeConnection();
+            connectionUtil.closeConnection();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class ItemDao implements ItemDaoImpl {
         String sql = "select * \n" +
                 "  from items i,items_promotions ip \n" +
                 " where i.id = ip.itemId and barcode='"+barcode+"'";
-        Connection connection = itemConnectionUtil.getConnection();
+        Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
         try {
@@ -65,7 +65,7 @@ public class ItemDao implements ItemDaoImpl {
             }
             rs.close();
             statement.close();
-            itemConnectionUtil.closeConnection();
+            connectionUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,7 +76,7 @@ public class ItemDao implements ItemDaoImpl {
     public List<Item> getItems() {
         List<Item> items = new ArrayList<Item>();
         String sql = "SELECT * FROM items";
-        Connection connection = itemConnectionUtil.getConnection();
+        Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
         try {
@@ -101,7 +101,7 @@ public class ItemDao implements ItemDaoImpl {
     public void insertItem(Item item) {
         String sql = "insert into items values(null, '"+item.getBarcode()+
                 "','"+item.getName()+"','"+item.getUnit()+"', "+item.getPrice()+")";
-        Connection connection = itemConnectionUtil.getConnection();
+        Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -113,7 +113,7 @@ public class ItemDao implements ItemDaoImpl {
                 System.out.println("插入失败");
             }
             statement.close();
-            itemConnectionUtil.closeConnection();
+            connectionUtil.closeConnection();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -122,7 +122,7 @@ public class ItemDao implements ItemDaoImpl {
     @Override
     public void deleteItemById(int id) {
         String sql = "delete from items where id = '"+id+"'";
-        Connection connection = itemConnectionUtil.getConnection();
+        Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -135,7 +135,7 @@ public class ItemDao implements ItemDaoImpl {
                 System.out.println("删除失败");
             }
             statement.close();
-            itemConnectionUtil.closeConnection();
+            connectionUtil.closeConnection();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -146,7 +146,7 @@ public class ItemDao implements ItemDaoImpl {
         String sql = "update items set barcode = '"+item.getBarcode()+"', name = '"+item.getName()
                 +"',unit = '"+item.getUnit()+"' ,price = '"+item.getPrice()
                 +"' where id = '"+item.getId()+"'";
-        Connection connection = itemConnectionUtil.getConnection();
+        Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -159,7 +159,7 @@ public class ItemDao implements ItemDaoImpl {
                 System.out.println("更新失败");
             }
             statement.close();
-            itemConnectionUtil.closeConnection();
+            connectionUtil.closeConnection();
         }catch (SQLException e) {
             e.printStackTrace();
         }
