@@ -5,7 +5,7 @@ import com.thoughtworks.iamcoach.pos.vo.Promotion;
 import java.util.List;
 
 public interface PromotionDaoImpl {
-    Promotion getPromotionById(int id);
+    Promotion getPromotionById(String id);
     List<Promotion> getPromotions();
     void insertPromotion(Promotion promotion);
     void deletePromotionById(int id);

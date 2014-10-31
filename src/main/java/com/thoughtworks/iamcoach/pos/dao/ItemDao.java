@@ -1,6 +1,6 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-import com.thoughtworks.iamcoach.pos.util.ItemConnectionUtil;
+import com.thoughtworks.iamcoach.pos.util.ConnectionUtil;
 import com.thoughtworks.iamcoach.pos.vo.Item;
 import com.thoughtworks.iamcoach.pos.vo.Promotion;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ItemDao implements ItemDaoImpl {
 
-    ItemConnectionUtil itemConnectionUtil = new ItemConnectionUtil();
+    ConnectionUtil itemConnectionUtil = new ConnectionUtil();
     private PromotionDaoImpl promotionDao = new PromotionDao();
     @Override
     public Item getItemById(int id) {
@@ -55,11 +55,11 @@ public class ItemDao implements ItemDaoImpl {
             rs = statement.executeQuery(sql);
             rs.next();
             item = new Item(rs.getString("id"),rs.getString("barcode"),rs.getString("name"),rs.getString("unit"),rs.getDouble("price"));
-            int proId = rs.getInt("proId");
+            String proId = rs.getString("proId");
             Promotion promotion = promotionDao.getPromotionById(proId);
             item.getPromotionList().add(promotion);
             while(rs.next()){
-                proId = rs.getInt("proId");
+                proId = rs.getString("proId");
                 promotion = promotionDao.getPromotionById(proId);
                 item.getPromotionList().add(promotion);
             }
