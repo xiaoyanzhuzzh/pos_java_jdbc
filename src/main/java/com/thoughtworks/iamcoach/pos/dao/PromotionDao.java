@@ -49,7 +49,7 @@ public class PromotionDao implements PromotionDaoImpl{
     }
 
     @Override
-    public void deletePromotionById(int id) {
+    public void deletePromotionById(String id) {
 
     }
 

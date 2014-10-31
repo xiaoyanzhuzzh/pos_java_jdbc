@@ -8,6 +8,6 @@ public interface PromotionDaoImpl {
     Promotion getPromotionById(String id);
     List<Promotion> getPromotions();
     void insertPromotion(Promotion promotion);
-    void deletePromotionById(int id);
+    void deletePromotionById(String id);
     void updatePromtion(Promotion promotion);
 }
