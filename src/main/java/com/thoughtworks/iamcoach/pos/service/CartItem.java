@@ -2,9 +2,23 @@ package com.thoughtworks.iamcoach.pos.service;
 
 import com.thoughtworks.iamcoach.pos.vo.Item;
 
-/**
- * Created by zhangzhihui on 14-10-31.
- */
 public class CartItem extends Item{
-    
+    private double number;
+
+    public double getNumber() {
+        return number;
+    }
+
+    public void setNumber(double number) {
+        this.number = number;
+    }
+
+    public CartItem(){
+
+    }
+
+    public CartItem(Item item, double number) {
+        super(item.getId(), item.getBarcode(), item.getName(), item.getUnit(), item.getPrice());
+        this.number = number;
+    }
 }
