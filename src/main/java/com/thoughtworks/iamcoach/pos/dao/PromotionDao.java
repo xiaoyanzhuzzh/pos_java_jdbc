@@ -1,20 +1,21 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-import com.thoughtworks.iamcoach.pos.vo.Item;
-import com.thoughtworks.iamcoach.pos.vo.Promotion;
+import com.thoughtworks.iamcoach.pos.util.ConnectionUtil;
+import com.thoughtworks.iamcoach.pos.vo.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
+import static com.thoughtworks.iamcoach.pos.vo.PromotionFactory.getPromotionByType;
+
 public class PromotionDao implements PromotionDaoImpl{
+    ConnectionUtil connectionUtil = new ConnectionUtil();
+
     @Override
     public Promotion getPromotionById(String id) {
-        Item item = null;
-        String sql = "SELECT * FROM items WHERE id = '"+id+"'";
-        Connection connection = itemConnectionUtil.getConnection();
+        Promotion promotion = null;
+        String sql = "SELECT * FROM promotions WHERE id = '"+id+"'";
+        Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
 
@@ -23,21 +24,18 @@ public class PromotionDao implements PromotionDaoImpl{
             rs = statement.executeQuery(sql);
             rs.next();
 
-            item = new Item(rs.getString("id"),
-                    rs.getString("barcode"),
-                    rs.getString("name"),
-                    rs.getString("unit"),
-                    rs.getDouble("price")
-            );
+            promotion = getPromotionByType(rs.getInt("type"));
+            promotion.setId(rs.getString("id"));
+            promotion.setProDesc(rs.getString("proDesc"));
+            promotion.setType(rs.getInt("type"));
 
             rs.close();
             statement.close();
-            itemConnectionUtil.closeConnection();
+            connectionUtil.closeConnection();
         }catch (SQLException e) {
             e.printStackTrace();
         }
-        return item;
-        return null;
+        return promotion;
     }
 
     @Override
