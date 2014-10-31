@@ -9,7 +9,7 @@ public class CategoryTest {
 
     public void can_get_arguments_value() {
         Category category = new Category(null, "水果");
-        assertThat(category.getName()).isEqualTo("橙汁");
+        assertThat(category.getName()).isEqualTo("水果");
         assertThat(category.getId()).isEqualTo(null);
     }
 
