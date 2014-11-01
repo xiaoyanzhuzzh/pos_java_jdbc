@@ -27,8 +27,8 @@ public class ItemDao implements ItemDaoImpl {
                     rs.getString("barcode"),
                     rs.getString("name"),
                     rs.getString("unit"),
-                    rs.getDouble("price")
-            );
+                    rs.getDouble("price"),
+                    rs.getString("categoryId"));
 
             rs.close();
             statement.close();
@@ -53,7 +53,13 @@ public class ItemDao implements ItemDaoImpl {
             rs = statement.executeQuery(sql);
             rs.next();
 
-            item = new Item(rs.getString("id"),rs.getString("barcode"),rs.getString("name"),rs.getString("unit"),rs.getDouble("price"));
+            item = new Item(rs.getString("id"),
+                    rs.getString("barcode"),
+                    rs.getString("name"),
+                    rs.getString("unit"),
+                    rs.getDouble("price"),
+                    rs.getString("categoryId")
+            );
 
             Promotion promotion = promotionDao.getPromotionById(rs.getString("proId"));
             item.getPromotionList().add(promotion);
@@ -87,7 +93,8 @@ public class ItemDao implements ItemDaoImpl {
                         rs.getString("barcode"),
                         rs.getString("name"),
                         rs.getString("unit"),
-                        rs.getDouble("price")
+                        rs.getDouble("price"),
+                        rs.getString("categoryId")
                 ));
             }
         } catch (SQLException e) {
