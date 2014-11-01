@@ -1,5 +1,9 @@
 package com.thoughtworks.iamcoach.pos.vo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class CartItem {
     private Item item;
     private double number;
@@ -17,4 +21,13 @@ public class CartItem {
         this.number = number;
     }
 
+    public double getSubtotal() {
+        List<Double> allSubTotals = new ArrayList<Double>();
+
+        for(int i = 0; i < item.getPromotionList().size(); i++){
+            allSubTotals.add(item.getPromotionList().get(i).calculate(item, this.number));
+        }
+
+        return Collections.min(allSubTotals);
+    }
 }
