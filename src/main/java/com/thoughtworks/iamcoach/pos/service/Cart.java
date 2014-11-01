@@ -16,8 +16,6 @@ public class Cart {
 
     public List<CartItem> getCartItems() {
         ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
-        ArrayList<Promotion> promotionList = null;
-
         double[] numbers = getNumbers();
 
         for(int i = 0; i < numbers.length; i++){
