@@ -1,7 +1,20 @@
 package com.thoughtworks.iamcoach.pos.vo;
 
-/**
- * Created by zhangzhihui on 14-11-1.
- */
 public class CartItem {
+    private Item item;
+    private double number;
+
+    public Item getItem() {
+        return this.item;
+    }
+
+    public double getNumber() {
+        return this.number;
+    }
+
+    public CartItem(Item item, double number) {
+        this.item = item;
+        this.number = number;
+    }
+
 }
