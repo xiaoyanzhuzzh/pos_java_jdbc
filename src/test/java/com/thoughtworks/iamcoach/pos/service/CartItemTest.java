@@ -27,7 +27,7 @@ public class CartItemTest {
         assertThat(cartItem.getUnit()).isEqualTo("瓶");
         assertThat(cartItem.getPrice()).isEqualTo(5.00);
     }
-    @Test
+//    @Test
 //    public void can_get_subTotal() {
 //        Item item = mock(Item.class);
 //        when(item.getName()).thenReturn("橙汁");
