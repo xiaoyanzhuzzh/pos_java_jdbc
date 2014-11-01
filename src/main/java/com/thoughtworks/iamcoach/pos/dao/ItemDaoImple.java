@@ -6,10 +6,10 @@ import com.thoughtworks.iamcoach.pos.vo.*;
 import java.sql.*;
 import java.util.*;
 
-public class ItemDaoImple implements ItemDaoImpl {
+public class ItemDaoImple implements ItemDao {
 
     ConnectionUtil connectionUtil = new ConnectionUtil();
-    private PromotionDaoImpl promotionDao = new PromotionDao();
+    private PromotionDao promotionDao = new PromotionDaoImple();
     @Override
     public Item getItemById(int id) {
         Item item = null;

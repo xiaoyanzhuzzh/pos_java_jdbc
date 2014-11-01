@@ -2,7 +2,6 @@ package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.util.ConnectionUtil;
 import com.thoughtworks.iamcoach.pos.vo.Category;
-import com.thoughtworks.iamcoach.pos.vo.Item;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class CategoryDaoImple implements CategoryDaoImpl{
+public class CategoryDaoImple implements CategoryDao {
     ConnectionUtil connectionUtil = new ConnectionUtil();
 
     @Override

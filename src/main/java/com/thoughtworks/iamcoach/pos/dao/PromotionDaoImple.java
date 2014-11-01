@@ -9,7 +9,7 @@ import java.util.List;
 
 import static com.thoughtworks.iamcoach.pos.vo.PromotionFactory.getPromotionByType;
 
-public class PromotionDaoImple implements PromotionDaoImpl{
+public class PromotionDaoImple implements PromotionDao {
     ConnectionUtil connectionUtil = new ConnectionUtil();
 
     @Override

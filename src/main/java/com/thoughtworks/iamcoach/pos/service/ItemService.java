@@ -6,7 +6,7 @@ import com.thoughtworks.iamcoach.pos.vo.Item;
 import java.util.List;
 
 public class ItemService implements ItemServiceImpl{
-    ItemDaoImpl itemDao = new ItemDao();
+    ItemDao itemDao = new ItemDaoImple();
 
     @Override
     public Item getItemByBarcode(String barcode) {
