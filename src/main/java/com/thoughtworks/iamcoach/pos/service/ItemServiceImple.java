@@ -5,7 +5,7 @@ import com.thoughtworks.iamcoach.pos.vo.Item;
 
 import java.util.List;
 
-public class ItemServiceImple implements ItemServiceImpl{
+public class ItemServiceImple implements ItemService {
     ItemDao itemDao = new ItemDaoImple();
 
     @Override

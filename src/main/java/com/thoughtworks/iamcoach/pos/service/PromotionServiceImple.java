@@ -6,7 +6,7 @@ import com.thoughtworks.iamcoach.pos.vo.Promotion;
 
 import java.util.List;
 
-public class PromotionServiceImple implements PromotionServiceImpl {
+public class PromotionServiceImple implements PromotionService {
     PromotionDao promotionDao = new PromotionDaoImple();
     @Override
     public Promotion getPromotionById(String id) {
