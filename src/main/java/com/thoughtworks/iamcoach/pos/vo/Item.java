@@ -11,6 +11,7 @@ public class Item {
     private String name;
     private String unit;
     private double price;
+    private String categoryId;
 
     private List<Promotion> promotionList = new ArrayList<Promotion>();
 
@@ -18,12 +19,13 @@ public class Item {
 
     }
 
-    public Item(String id, String barcode, String name, String unit, double price){
+    public Item(String id, String barcode, String name, String unit, double price, String categoryId){
         this.id = id;
         this.barcode = barcode;
         this.name = name;
         this.price = price;
         this.unit = unit;
+        this.categoryId = categoryId;
     }
 
     public Item(String id, String barcode, String name, double price, String unit, List<Promotion> promotionList) {
@@ -70,6 +72,13 @@ public class Item {
         this.price = price;
     }
 
+    public String getCategoryId() {
+        return categoryId;
+    }
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public List<Promotion> getPromotionList() {
         return promotionList;
     }
@@ -85,7 +94,8 @@ public class Item {
                 ", name='" + name + '\'' +
                 ", unit='" + unit + '\'' +
                 ", price=" + price +
+                ", categoryId='" + categoryId + '\'' +
+                ", promotionList=" + promotionList +
                 '}';
     }
-
 }
