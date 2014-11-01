@@ -12,7 +12,7 @@ public class CartItemTest {
         CartItem cartItem = new CartItem(item, number);
         assertThat(cartItem.getItem().getBarcode()).isEqualTo("ITEM000002");
         assertThat(cartItem.getItem().getUnit()).isEqualTo("瓶");
-        assertThat(cartItem.getItem().getName()).isEqualTo("chengz");
+        assertThat(cartItem.getItem().getName()).isEqualTo("橙汁");
         assertThat(cartItem.getNumber()).isEqualTo(5.0);
     }
 
