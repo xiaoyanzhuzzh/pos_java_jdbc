@@ -4,7 +4,7 @@ import com.thoughtworks.iamcoach.pos.vo.Item;
 
 import java.util.List;
 
-public interface ItemDaoImpl {
+public interface ItemDao {
         Item getItemById(int id);
         Item getItemByBarcode(String barcode);
         List<Item> getItems();
