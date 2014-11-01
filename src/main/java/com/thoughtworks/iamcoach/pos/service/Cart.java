@@ -28,28 +28,6 @@ public class Cart {
         return cartItems;
     }
 
-    public double getTotalSum() {
-        List<CartItem> cartItems = this.getCartItems();
-
-        double total = 0;
-        for(CartItem aCartItem: cartItems){
-            double actualSubTotal = aCartItem.getNumber() * aCartItem.getItem().getPrice();
-            total += actualSubTotal;
-        }
-
-        return total;
-    }
-
-    public double getActualSum() {
-        List<CartItem> cartItems = this.getCartItems();
-
-        double actutalTotal = 0;
-        for(CartItem aCartItem: cartItems){
-            actutalTotal += aCartItem.getSubtotal();
-        }
-        return actutalTotal;
-    }
-
     private double[] getNumbers() {
         double numbers[] = new double[items.size()];
 
