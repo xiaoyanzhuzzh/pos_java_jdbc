@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CategoryDao implements CategoryDaoImpl{
     ConnectionUtil connectionUtil = new ConnectionUtil();
+
     @Override
     public Category getCategoryById(String id) {
         Category category = null;
