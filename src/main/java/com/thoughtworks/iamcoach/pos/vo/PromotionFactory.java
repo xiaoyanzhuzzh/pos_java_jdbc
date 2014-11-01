@@ -1,9 +1,9 @@
 package com.thoughtworks.iamcoach.pos.vo;
 
 public class PromotionFactory {
-    public static final int DISCOUNT = 1;
+    public static final int BUY_TWO_GET_ONE = 1;
     public static final int SECOND_HALF_MONEY = 2;
-    public static final int BUY_TWO_GET_ONE = 3;
+    public static final int DISCOUNT = 3;
 
     public static Promotion getPromotionByType(int type) {
         Promotion promotion = null;
