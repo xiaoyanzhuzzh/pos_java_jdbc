@@ -18,7 +18,7 @@ public class CartItem extends Item{
     }
 
     public CartItem(Item item, double number) {
-        super(item.getId(), item.getBarcode(), item.getName(), item.getUnit(), item.getPrice());
+        super(item.getId(), item.getBarcode(), item.getName(), item.getUnit(), item.getPrice(), item.getCategoryId());
         this.number = number;
     }
 }
