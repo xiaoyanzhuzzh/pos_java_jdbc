@@ -1,7 +1,10 @@
 package com.thoughtworks.iamcoach.pos.service;
 
-/**
- * Created by zhangzhihui on 14-11-1.
- */
+import com.thoughtworks.iamcoach.pos.vo.Item;
+
+import java.util.List;
+
 public interface ItemServiceImpl {
+    Item getItemByBarcode(String barcode);
+    List<Item> getItems();
 }
