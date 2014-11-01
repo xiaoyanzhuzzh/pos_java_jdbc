@@ -59,3 +59,4 @@ insert into items_promotions values(3,3,0.70);
 insert into items_promotions values(5,1,null);
 insert into items_promotions values(5,2,null);
 insert into items_promotions values(5,3,0.75);
+commit;
