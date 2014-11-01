@@ -1,7 +1,17 @@
 package com.thoughtworks.iamcoach.pos.dao;
 
-/**
- * Created by zhangzhihui on 14-11-1.
- */
-public class CategoryDao {
+import com.thoughtworks.iamcoach.pos.vo.Category;
+
+import java.util.List;
+
+public class CategoryDao implements CategoryDaoImpl{
+    @Override
+    public Category getCategoryById(String id) {
+        return null;
+    }
+
+    @Override
+    public List<Category> getItems() {
+        return null;
+    }
 }
