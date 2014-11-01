@@ -6,7 +6,7 @@ import com.thoughtworks.iamcoach.pos.vo.*;
 import java.sql.*;
 import java.util.*;
 
-public class ItemDao implements ItemDaoImpl {
+public class ItemDaoImple implements ItemDaoImpl {
 
     ConnectionUtil connectionUtil = new ConnectionUtil();
     private PromotionDaoImpl promotionDao = new PromotionDao();
