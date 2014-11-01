@@ -1,5 +1,7 @@
 package com.thoughtworks.iamcoach.pos.vo;
 
+import com.thoughtworks.iamcoach.pos.service.Scanner;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +27,8 @@ public class CartItem {
         List<Double> allSubTotals = new ArrayList<Double>();
 
         for(int i = 0; i < item.getPromotionList().size(); i++){
-            allSubTotals.add(item.getPromotionList().get(i).calculate(item, this.number));
+            System.out.println(this.getNumber());
+            allSubTotals.add(item.getPromotionList().get(i).calculate(item, this.getNumber()));
         }
 
         return Collections.min(allSubTotals);
