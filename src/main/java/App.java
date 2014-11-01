@@ -1,5 +1,9 @@
+import com.thoughtworks.iamcoach.pos.dao.CategoryDao;
+import com.thoughtworks.iamcoach.pos.dao.CategoryDaoImpl;
 import com.thoughtworks.iamcoach.pos.dao.ItemDao;
 import com.thoughtworks.iamcoach.pos.dao.ItemDaoImpl;
+import com.thoughtworks.iamcoach.pos.service.ItemService;
+import com.thoughtworks.iamcoach.pos.service.ItemServiceImpl;
 import com.thoughtworks.iamcoach.pos.vo.Item;
 
 import java.util.ArrayList;
@@ -10,10 +14,12 @@ public class App {
     public static void main(String[] args){
 
         List<Item> items = new ArrayList<Item>();
-        ItemDaoImpl itemDao = new ItemDao();
-        System.out.println(itemDao.getItems());
-        System.out.println(itemDao.getItemByBarcode("ITEM000001"));
-        System.out.println(itemDao.getItemByBarcode("ITEM000001").getPromotionList());
+        ItemServiceImpl itemService = new ItemService();
+        System.out.println(itemService.getItems());
+        System.out.println(itemService.getItemByBarcode("ITEM000001"));
+
+        CategoryDaoImpl categoryDao = new CategoryDao();
+        System.out.println(categoryDao.getCategoryById("1"));
     }
 
 }
