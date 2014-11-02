@@ -60,12 +60,39 @@ public class PromotionDaoImple implements PromotionDao {
                 promotion.setType(rs.getInt("type"));
                 promotions.add(promotion);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return promotions;
     }
 
+    @Override
+    public double getDiscount(){
+        List<Promotion> promotions = new ArrayList<Promotion>();
+        Promotion promotion = null;
+
+        String sql = "SELECT * FROM promotions i, items_promotions ip where i.type = 3";
+        Connection connection = connectionUtil.getConnection();
+        Statement statement = null;
+        ResultSet rs = null;
+        try {
+            statement = connection.createStatement();
+            rs = statement.executeQuery(sql);
+            while(rs.next()){
+
+                promotion = getPromotionByType(rs.getInt("type"));
+
+                promotion.setId(rs.getString("id"));
+                promotion.setProDesc(rs.getString("proDesc"));
+                promotion.setType(rs.getInt("type"));
+                promotions.add(promotion);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0.0;
+    }
     @Override
     public void insertPromotion(Promotion promotion) {
 

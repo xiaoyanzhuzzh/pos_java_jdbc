@@ -7,6 +7,7 @@ import java.util.List;
 public interface PromotionDao {
     Promotion getPromotionById(String id);
     List<Promotion> getPromotions();
+    double getDiscount();
     void insertPromotion(Promotion promotion);
     void deletePromotionById(String id);
     void updatePromtion(Promotion promotion);
