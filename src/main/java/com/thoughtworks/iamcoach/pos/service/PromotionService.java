@@ -7,4 +7,5 @@ import java.util.List;
 public interface PromotionService {
     Promotion getPromotionById(String id);
     List<Promotion> getPromotions();
+    double getDiscount();
 }
