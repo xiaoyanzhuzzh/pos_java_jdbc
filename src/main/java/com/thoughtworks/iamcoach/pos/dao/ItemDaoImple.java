@@ -80,7 +80,9 @@ public class ItemDaoImple implements ItemDao {
     @Override
     public List<Item> getItems() {
         List<Item> items = new ArrayList<Item>();
-        String sql = "SELECT * FROM items";
+        List<Promotion> promotions = new ArrayList<Promotion>();
+
+        String sql = "SELECT * FROM items i, items_promotions ip where i.id = ip.itemId";
         Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
@@ -97,6 +99,9 @@ public class ItemDaoImple implements ItemDao {
                         rs.getString("categoryId")
                 ));
             }
+            rs.close();
+            statement.close();
+            connectionUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
