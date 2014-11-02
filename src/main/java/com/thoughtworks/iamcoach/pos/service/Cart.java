@@ -7,11 +7,13 @@ import java.util.List;
 
 public class Cart {
     private List<String> inputs;
-    private List<Item> items;
+    private List<Item> items = new ArrayList<Item>();
 
     public Cart(Scanner scanner, ItemService itemServiceImple){
         this.inputs = scanner.getInputs();
-        this.items = itemServiceImple.getItems();
+        for (Item aItem: itemServiceImple.getItems()){
+            this.items.add(itemServiceImple.getItemByBarcode(aItem.getBarcode()));
+        }
     }
 
     public List<CartItem> getCartItems() {
@@ -29,8 +31,8 @@ public class Cart {
     private double[] getNumbers() {
         double numbers[] = new double[items.size()];
 
-        for(int i=0; i<items.size(); i++){
-            for(int j=0; j<inputs.size(); j++){
+        for(int i = 0; i < items.size(); i++){
+            for(int j = 0; j < inputs.size(); j++){
                 boolean canSplit = inputs.get(j).contains("-");
                 if(canSplit){
                     numbers[i] +=  processSplitedBarcode(i, j);
