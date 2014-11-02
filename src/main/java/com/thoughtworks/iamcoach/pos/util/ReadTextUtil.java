@@ -12,7 +12,7 @@ public class ReadTextUtil {
             Path path = FileSystems.getDefault().getPath("src/main/resources/", fileName);
             text =  Files.readAllLines(path);
         } catch (IOException ex) {
-            System.out.println("fail read file!");
+            ex.printStackTrace();
         }
         return text;
     }
