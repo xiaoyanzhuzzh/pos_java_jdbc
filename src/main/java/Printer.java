@@ -38,9 +38,9 @@ public class Printer {
     public void printAllCartItems(){
         System.out.println("************************************************");
         for(CartItem aCartItem: cartItems){
-            System.out.println("名称：" + aCartItem.getItem().getName() + "数量：" + aCartItem.getNumber()
-                            + "单价：" + aCartItem.getItem().getPrice() + "元" + "单位：" + aCartItem.getItem().getUnit()
-                            + "小计：" + aCartItem.getSubtotal() + "元"
+            System.out.println("名称：" + aCartItem.getItem().getName() + "  数量：" + aCartItem.getNumber()
+                            + "  单价：" + aCartItem.getItem().getPrice() + "元" + "  单位：" + aCartItem.getItem().getUnit()
+                            + "  小计：" + aCartItem.getSubtotal() + "元"
             );
         }
         System.out.println("************************************************");
