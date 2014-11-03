@@ -36,7 +36,6 @@ public class CartItem {
             CartItem cartItem = new CartItem(item, number);
             allSubTotals.add(aPromotion.calculate(cartItem, aPromotion.getDiscount()));
         }
-        System.out.println(allSubTotals);
         return Collections.min(allSubTotals);
     }
 }
