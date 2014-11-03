@@ -4,6 +4,7 @@ public abstract class Promotion {
     private String id;
     private String proDesc;
     private int type;
+    private double discount;
 
     public String getId() {
         return id;
@@ -29,12 +30,21 @@ public abstract class Promotion {
         this.type = type;
     }
 
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
     public Promotion(){}
 
-    private Promotion(String id, String proDesc, int type) {
+    private Promotion(String id, String proDesc, int type, double discount) {
         this.id = id;
         this.proDesc = proDesc;
         this.type = type;
+        this.discount = discount;
     }
 
     @Override
@@ -43,8 +53,11 @@ public abstract class Promotion {
                 "id='" + id + '\'' +
                 ", proDesc='" + proDesc + '\'' +
                 ", type=" + type +
+                ", discount=" + discount +
                 '}';
     }
 
     public abstract double calculate(Item item, double num);
+
+
 }
