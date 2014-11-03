@@ -25,6 +25,7 @@ public class Cart {
                 cartItems.add(new CartItem(items.get(i), numbers[i]));
             }
         }
+        System.out.println(cartItems);
         return cartItems;
     }
 
