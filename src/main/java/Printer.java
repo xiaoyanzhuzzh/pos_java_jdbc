@@ -1,13 +1,8 @@
-import com.thoughtworks.iamcoach.pos.service.Cart;
-import com.thoughtworks.iamcoach.pos.service.CategoryService;
-import com.thoughtworks.iamcoach.pos.service.CategoryServiceImpl;
-import com.thoughtworks.iamcoach.pos.vo.CartItem;
-import com.thoughtworks.iamcoach.pos.vo.Category;
+import com.thoughtworks.iamcoach.pos.service.*;
+import com.thoughtworks.iamcoach.pos.vo.*;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Printer {
     public List<CartItem> cartItems = new ArrayList<CartItem>();
