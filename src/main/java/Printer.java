@@ -1,5 +1,8 @@
 import com.thoughtworks.iamcoach.pos.service.Cart;
+import com.thoughtworks.iamcoach.pos.service.CategoryService;
+import com.thoughtworks.iamcoach.pos.service.CategoryServiceImpl;
 import com.thoughtworks.iamcoach.pos.vo.CartItem;
+import com.thoughtworks.iamcoach.pos.vo.Category;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,12 +23,12 @@ public class Printer {
         printTotal();
     }
 
-    public void printShopName(){
+    private void printShopName(){
         System.out.println("        ********Let's Go 购物清单*********");
         System.out.println("----------------------------------------------------------");
     }
 
-    public void printDate(){
+    private void printDate(){
         Date dateAndTime = new Date();
 
         java.text.DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -35,11 +38,19 @@ public class Printer {
         System.out.println("           "+ date + "   " + time);
     }
 
-    public void printAllCartItems(){
+    private Category generateCategory(String id){
+        CategoryService categoryServiceImple = new CategoryServiceImpl();
+        return categoryServiceImple.getCategoryById(id);
+    }
+
+    private void printAllCartItems(){
         System.out.println("************************************************");
         for(CartItem aCartItem: cartItems){
-            System.out.println("名称：" + aCartItem.getItem().getName() + "  数量：" + aCartItem.getNumber()
-                            + "  单价：" + aCartItem.getItem().getPrice() + "元" + "  单位：" + aCartItem.getItem().getUnit()
+            System.out.println("类别："+ generateCategory(aCartItem.getItem().getId()).getName()
+                            + "  名称：" + aCartItem.getItem().getName()
+                            + "  数量：" + aCartItem.getNumber()
+                            + "  单价：" + aCartItem.getItem().getPrice() + "元"
+                            + "  单位：" + aCartItem.getItem().getUnit()
                             + "  小计：" + aCartItem.getSubtotal() + "元"
             );
         }
