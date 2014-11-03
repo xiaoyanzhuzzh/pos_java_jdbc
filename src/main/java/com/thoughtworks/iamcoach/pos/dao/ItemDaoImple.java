@@ -2,6 +2,7 @@ package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.util.ConnectionUtil;
 import com.thoughtworks.iamcoach.pos.vo.*;
+import org.omg.PortableInterceptor.DISCARDING;
 
 import java.sql.*;
 import java.util.*;
@@ -42,6 +43,8 @@ public class ItemDaoImple implements ItemDao {
     @Override
     public Item getItemByBarcode(String barcode){
         Item item = null;
+        Promotion promotion = null;
+
         String sql = "select * \n" +
                 "  from items i,items_promotions ip \n" +
                 " where i.id = ip.itemId and barcode='"+barcode+"'";
@@ -61,7 +64,10 @@ public class ItemDaoImple implements ItemDao {
                     rs.getString("categoryId")
             );
 
-            Promotion promotion = promotionDao.getPromotionById(rs.getString("proId"));
+            promotion = promotionDao.getPromotionById(rs.getString("proId"));
+            if(rs.getString("proId").equals("3")){
+                promotion.setDiscount(promotionDao.getDiscount());
+            }
             item.getPromotionList().add(promotion);
 
             while(rs.next()){
