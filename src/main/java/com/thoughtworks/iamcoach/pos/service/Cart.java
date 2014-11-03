@@ -10,9 +10,7 @@ public class Cart {
 
     public Cart(Scanner scanner, ItemService itemServiceImple){
         this.inputs = scanner.getInputs();
-        for (Item aItem: itemServiceImple.getItems()){
-            this.items.add(itemServiceImple.getItemByBarcode(aItem.getBarcode()));
-        }
+        this.items = itemServiceImple.getItems();
     }
 
     public List<CartItem> getCartItems() {
@@ -34,16 +32,16 @@ public class Cart {
             for(int j = 0; j < inputs.size(); j++){
                 boolean canSplit = inputs.get(j).contains("-");
                 if(canSplit){
-                    numbers[i] +=  processSplitBarcode(i, j);
+                    numbers[i] +=  SplitBarcodeAndGetNumber(i, j);
                 }else{
-                    numbers[i] += processBarcode(i, j);
+                    numbers[i] += getNumber(i, j);
                 }
             }
         }
         return numbers;
     }
 
-    private double processSplitBarcode(int i, int j){
+    private double SplitBarcodeAndGetNumber(int i, int j){
         double number = 0;
 
         String[] barcodeAndNumber = inputs.get(j).split("-");
@@ -53,7 +51,7 @@ public class Cart {
         return number;
     }
 
-    private double processBarcode(int i, int j){
+    private double getNumber(int i, int j){
         if(items.get(i).getBarcode().equals(inputs.get(j))){
             return 1.0;
         }
