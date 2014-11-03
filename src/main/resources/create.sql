@@ -45,18 +45,18 @@ insert into items values(null,'ITEM000002','橙汁','瓶',3.5,2);
 insert into items values(null,'ITEM000003','水果','斤',2.5,1);
 insert into items values(null,'ITEM000004','羽毛球','个',1.0,3);
 insert into items values(null,'ITEM000005','可口可乐','瓶',4.0,2);
-s
-insert into promotions values(null,'买二赠一',1);
-insert into promotions values(null,'第二件半价', 2);
-insert into promotions values(null,'打折',3);
 
-insert into items_promotions values(1,1,null);
-insert into items_promotions values(1,2,null);
+insert into promotions values(null,'买二赠一', 1);
+insert into promotions values(null,'第二件半价', 2);
+insert into promotions values(null,'打折', 3);
+
+insert into items_promotions values(1,1,1.0);
+insert into items_promotions values(1,2,1.0);
 insert into items_promotions values(1,3,0.65);
-insert into items_promotions values(3,1,null);
-insert into items_promotions values(3,2,null);
+insert into items_promotions values(3,1,1.0);
+insert into items_promotions values(3,2,1.0);
 insert into items_promotions values(3,3,0.70);
-insert into items_promotions values(5,1,null);
-insert into items_promotions values(5,2,null);
+insert into items_promotions values(5,1,1.0);
+insert into items_promotions values(5,2,1.0);
 insert into items_promotions values(5,3,0.75);
-commit;
+
