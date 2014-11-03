@@ -21,6 +21,14 @@ public class CartItem {
         this.number = number;
     }
 
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "item=" + item +
+                ", number=" + number +
+                '}';
+    }
+
     public double getSubtotal() {
         List<Double> allSubTotals = new ArrayList<Double>();
 
