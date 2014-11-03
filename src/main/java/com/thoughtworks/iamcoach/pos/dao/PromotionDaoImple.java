@@ -15,7 +15,8 @@ public class PromotionDaoImple implements PromotionDao {
     @Override
     public Promotion getPromotionById(String id) {
         Promotion promotion = null;
-        String sql = "SELECT * FROM promotions where id = '"+id+"'" ;
+        String sql = "SELECT * FROM promotions i, " +
+                "items_promotions ip where i.id = ip.proId and id = '"+id+"'" ;
         Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
@@ -26,9 +27,11 @@ public class PromotionDaoImple implements PromotionDao {
             rs.next();
 
             promotion = getPromotionByType(rs.getInt("type"));
+
             promotion.setId(rs.getString("id"));
             promotion.setProDesc(rs.getString("proDesc"));
             promotion.setType(rs.getInt("type"));
+            promotion.setDiscount(rs.getDouble("discount"));
 
             rs.close();
             statement.close();
