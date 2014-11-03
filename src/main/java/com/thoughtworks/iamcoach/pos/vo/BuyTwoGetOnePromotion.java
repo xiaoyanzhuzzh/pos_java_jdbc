@@ -3,9 +3,9 @@ package com.thoughtworks.iamcoach.pos.vo;
 public class BuyTwoGetOnePromotion extends Promotion{
 
     @Override
-    public double calculate(Item item, double number) {
-        double promotionNumber = ((int) number)/3;
-        double actualNumber = number - promotionNumber;
-        return actualNumber * item.getPrice();
+    public double calculate(CartItem cartItem, double discount) {
+        double promotionNumber = ((int) cartItem.getNumber())/3;
+        double actualNumber = cartItem.getNumber() - promotionNumber;
+        return actualNumber * cartItem.getItem().getPrice();
     }
 }
