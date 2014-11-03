@@ -32,7 +32,7 @@ public class Printer {
         String date = format1.format(dateAndTime);
         String time = String.format("%tr", dateAndTime);
 
-        System.out.println(date + "    " + time);
+        System.out.println("           "+ date + "   " + time);
     }
 
     public void printAllCartItems(){
