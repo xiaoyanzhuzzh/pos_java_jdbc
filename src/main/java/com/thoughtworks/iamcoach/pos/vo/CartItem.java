@@ -33,7 +33,8 @@ public class CartItem {
         List<Double> allSubTotals = new ArrayList<Double>();
 
         for(Promotion aPromotion: item.getPromotionList()){
-            allSubTotals.add(aPromotion.calculate(item, this.getNumber()));
+            CartItem cartItem = new CartItem(item, number);
+            allSubTotals.add(aPromotion.calculate(cartItem, aPromotion.getDiscount()));
         }
         System.out.println(allSubTotals);
         return Collections.min(allSubTotals);
