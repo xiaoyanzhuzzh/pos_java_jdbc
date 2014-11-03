@@ -88,7 +88,7 @@ public class ItemDaoImple implements ItemDao {
         List<Item> items = new ArrayList<Item>();
         List<Promotion> promotions = new ArrayList<Promotion>();
 
-        String sql = "SELECT * FROM items i, items_promotions ip where i.id = ip.itemId";
+        String sql = "SELECT * FROM items ";
         Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
