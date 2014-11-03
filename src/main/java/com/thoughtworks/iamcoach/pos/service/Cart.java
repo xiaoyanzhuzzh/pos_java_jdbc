@@ -2,8 +2,7 @@ package com.thoughtworks.iamcoach.pos.service;
 
 import com.thoughtworks.iamcoach.pos.vo.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Cart {
     private List<String> inputs;
