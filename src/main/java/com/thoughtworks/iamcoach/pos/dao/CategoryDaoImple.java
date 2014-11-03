@@ -37,7 +37,7 @@ public class CategoryDaoImple implements CategoryDao {
     }
 
     @Override
-    public List<Category> getItems() {
+    public List<Category> getCategories() {
         return null;
     }
 }
