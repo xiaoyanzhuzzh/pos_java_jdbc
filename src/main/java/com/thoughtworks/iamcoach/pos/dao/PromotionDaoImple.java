@@ -15,7 +15,7 @@ public class PromotionDaoImple implements PromotionDao {
     @Override
     public Promotion getPromotionById(String id) {
         Promotion promotion = null;
-        String sql = "SELECT * FROM promotions WHERE id = '"+id+"'";
+        String sql = "SELECT * FROM promotions where id = '"+id+"'" ;
         Connection connection = connectionUtil.getConnection();
         Statement statement = null;
         ResultSet rs = null;
