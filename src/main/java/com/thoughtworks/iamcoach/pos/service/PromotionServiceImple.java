@@ -17,4 +17,9 @@ public class PromotionServiceImple implements PromotionService {
     public List<Promotion> getPromotions() {
         return promotionDao.getPromotions();
     }
+
+    @Override
+    public double getDiscount() {
+        return promotionDao.getDiscount();
+    }
 }
