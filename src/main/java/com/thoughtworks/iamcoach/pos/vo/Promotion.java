@@ -57,7 +57,7 @@ public abstract class Promotion {
                 '}';
     }
 
-    public abstract double calculate(Item item, double num);
+    public abstract double calculate(CartItem cartItem, double discount);
 
 
 }
