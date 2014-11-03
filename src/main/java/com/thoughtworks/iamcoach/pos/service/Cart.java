@@ -34,7 +34,7 @@ public class Cart {
             for(int j = 0; j < inputs.size(); j++){
                 boolean canSplit = inputs.get(j).contains("-");
                 if(canSplit){
-                    numbers[i] +=  processSplitedBarcode(i, j);
+                    numbers[i] +=  processSplitBarcode(i, j);
                 }else{
                     numbers[i] += processBarcode(i, j);
                 }
@@ -43,7 +43,7 @@ public class Cart {
         return numbers;
     }
 
-    private double processSplitedBarcode(int i, int j){
+    private double processSplitBarcode(int i, int j){
         double number = 0;
 
         String[] barcodeAndNumber = inputs.get(j).split("-");
