@@ -42,7 +42,7 @@ insert into categories values(null,'运动器材');
 
 insert into items values(null,'ITEM000001','葡萄','斤',6.5,1);
 insert into items values(null,'ITEM000002','橙汁','瓶',3.5,2);
-insert into items values(null,'ITEM000003','水果','斤',2.5,1);
+insert into items values(null,'ITEM000003','苹果','斤',2.5,1);
 insert into items values(null,'ITEM000004','羽毛球','个',1.0,3);
 insert into items values(null,'ITEM000005','可口可乐','瓶',4.0,2);
 
