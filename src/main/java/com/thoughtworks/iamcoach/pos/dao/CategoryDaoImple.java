@@ -33,6 +33,7 @@ public class CategoryDaoImple implements CategoryDao {
         }catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println(category);
         return category;
     }
 
