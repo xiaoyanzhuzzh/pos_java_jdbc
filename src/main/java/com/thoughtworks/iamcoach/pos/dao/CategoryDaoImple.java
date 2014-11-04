@@ -26,14 +26,12 @@ public class CategoryDaoImple implements CategoryDao {
             rs.next();
 
             category = new Category(rs.getString("id"), rs.getString("name"));
-
             rs.close();
             statement.close();
             connectionUtil.closeConnection();
         }catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(category);
         return category;
     }
 
