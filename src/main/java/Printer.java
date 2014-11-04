@@ -41,7 +41,7 @@ public class Printer {
     private void printAllCartItems(){
         System.out.println("************************************************");
         for(CartItem aCartItem: cartItems){
-            System.out.println("类别："+ generateCategory(aCartItem.getItem().getId()).getName()
+            System.out.println("类别："+ generateCategory(aCartItem.getItem().getCategoryId()).getName()
                             + "  名称：" + aCartItem.getItem().getName()
                             + "  数量：" + aCartItem.getNumber()
                             + "  单价：" + aCartItem.getItem().getPrice() + "元"
