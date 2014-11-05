@@ -11,6 +11,7 @@ public class ItemDaoImple implements ItemDao {
 
     ConnectionUtil connectionUtil = new ConnectionUtil();
     private PromotionDao promotionDao = new PromotionDaoImple();
+    private PreparedStatement prepareStatement = null;
 
     @Override
     public Item getItemByBarcode(String barcode){
@@ -85,5 +86,39 @@ public class ItemDaoImple implements ItemDao {
             e.printStackTrace();
         }
         return items;
+    }
+
+    @Override
+    public List<Promotion> getPromotionsByItemId(String id) {
+        List<Promotion> promotions = new ArrayList<Promotion>();
+        String sql = "SELECT promotions.*, items_promotions.discount FROM promotions, items_promotions " +
+                "WHERE items_promotions.itemId=? AND promotions.id=items_promotions.proId";
+
+        Connection connection = connectionUtil.getConnection();
+        ResultSet rs = null;
+
+        try {
+            prepareStatement = connection.prepareStatement(sql);
+            prepareStatement.setString(1,id);
+
+            rs = prepareStatement.executeQuery();
+            while(rs.next()){
+                Promotion promotion = PromotionFactory.getPromotionByType(rs.getInt("type"));
+
+                promotion.setId(rs.getString("id"));
+                promotion.setType(rs.getInt("type"));
+                promotion.setProDesc(rs.getString("description"));
+                promotion.setDiscount(rs.getDouble("discount"));
+
+                promotions.add(promotion);
+            }
+            rs.close();
+            prepareStatement.close();
+            connectionUtil.closeConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return promotions;
     }
 }
