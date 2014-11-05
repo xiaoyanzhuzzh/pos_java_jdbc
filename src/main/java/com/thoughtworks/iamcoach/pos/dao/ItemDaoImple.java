@@ -39,7 +39,7 @@ public class ItemDaoImple implements ItemDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return item;n
+        return item;
     }
 
     @Override
