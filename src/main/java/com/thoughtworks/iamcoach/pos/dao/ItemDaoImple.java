@@ -91,7 +91,7 @@ public class ItemDaoImple implements ItemDao {
 
                 promotion.setId(rs.getString("id"));
                 promotion.setType(rs.getInt("type"));
-                promotion.setProDesc(rs.getString("description"));
+                promotion.setProDesc(rs.getString("proDesc"));
                 promotion.setDiscount(rs.getDouble("discount"));
 
                 promotions.add(promotion);
