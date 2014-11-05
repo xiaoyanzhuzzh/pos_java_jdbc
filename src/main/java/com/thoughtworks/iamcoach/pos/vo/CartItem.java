@@ -37,5 +37,5 @@ public class CartItem {
             allSubTotals.add(aPromotion.calculate(cartItem, aPromotion.getDiscount()));
         }
       return Collections.min(allSubTotals);
-s    }
+    }
 }
