@@ -7,12 +7,10 @@ import java.util.*;
 public class Cart {
     private List<String> inputs;
     private ItemService itemServiceImple;
-//    private List<Item> items = new ArrayList<Item>();
 
     public Cart(Scanner scanner, ItemService itemServiceImple){
         this.inputs = scanner.getInputs();
         this.itemServiceImple = itemServiceImple;
-//        this.items = itemServiceImple.getItems();
     }
 
     public List<CartItem> getCartItems() {
@@ -31,16 +29,6 @@ public class Cart {
         System.out.println(cartItems);
         return cartItems;
     }
-//        ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
-//        double[] numbers = getNumbers();
-//
-//        for(int i = 0; i < numbers.length; i++){
-//            if(numbers[i] != 0){
-//                cartItems.add(new CartItem(items.get(i), numbers[i]));
-//            }
-//        }
-//        return cartItems;
-//    }
 
     private double[] getNumbers(List<Item> items) {
         double numbers[] = new double[items.size()];
@@ -57,22 +45,6 @@ public class Cart {
         }
         return numbers;
     }
-
-//    private double[] getNumbers() {
-//        double numbers[] = new double[items.size()];
-//
-//        for(int i = 0; i < items.size(); i++){
-//            for(int j = 0; j < inputs.size(); j++){
-//                boolean canSplit = inputs.get(j).contains("-");
-//                if(canSplit){
-//                    numbers[i] +=  SplitBarcodeAndGetNumber(i, j);
-//                }else{
-//                    numbers[i] += getNumber(i, j);
-//                }
-//            }
-//        }
-//        return numbers;
-//    }
 
     private double splitBarcodeAndGetNumber(int i, int j, List<Item> items){
         double number = 0;
