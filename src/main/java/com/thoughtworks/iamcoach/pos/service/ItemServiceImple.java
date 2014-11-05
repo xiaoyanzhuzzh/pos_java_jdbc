@@ -2,6 +2,7 @@ package com.thoughtworks.iamcoach.pos.service;
 
 import com.thoughtworks.iamcoach.pos.dao.*;
 import com.thoughtworks.iamcoach.pos.vo.Item;
+import com.thoughtworks.iamcoach.pos.vo.Promotion;
 
 import java.util.List;
 
@@ -16,5 +17,10 @@ public class ItemServiceImple implements ItemService {
     @Override
     public List<Item> getItems() {
         return itemDao.getItems();
+    }
+
+    @Override
+    public List<Promotion> getPromotionsByItemId(String id) {
+        return itemDao.getPromotionsByItemId(id);
     }
 }
