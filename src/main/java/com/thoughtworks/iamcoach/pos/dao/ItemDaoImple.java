@@ -2,7 +2,6 @@ package com.thoughtworks.iamcoach.pos.dao;
 
 import com.thoughtworks.iamcoach.pos.util.ConnectionUtil;
 import com.thoughtworks.iamcoach.pos.vo.*;
-import org.omg.PortableInterceptor.DISCARDING;
 
 import java.sql.*;
 import java.util.*;
@@ -10,7 +9,6 @@ import java.util.*;
 public class ItemDaoImple implements ItemDao {
 
     ConnectionUtil connectionUtil = new ConnectionUtil();
-    private PromotionDao promotionDao = new PromotionDaoImple();
     private PreparedStatement prepareStatement = null;
     private ResultSet rs = null;
 
