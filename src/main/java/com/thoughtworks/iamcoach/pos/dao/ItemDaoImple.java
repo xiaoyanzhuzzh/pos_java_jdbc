@@ -45,12 +45,10 @@ public class ItemDaoImple implements ItemDao {
     @Override
     public List<Item> getItems() {
         List<Item> items = new ArrayList<Item>();
-        List<Promotion> promotions = new ArrayList<Promotion>();
 
         String sql = "SELECT * FROM items ";
         Connection connection = connectionUtil.getConnection();
         Statement statement = null;
-        ResultSet rs = null;
         try {
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
