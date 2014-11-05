@@ -12,21 +12,18 @@ public class ItemDaoImple implements ItemDao {
     ConnectionUtil connectionUtil = new ConnectionUtil();
     private PromotionDao promotionDao = new PromotionDaoImple();
     private PreparedStatement prepareStatement = null;
+    private ResultSet rs = null;
 
     @Override
     public Item getItemByBarcode(String barcode){
-        Item item = null;
-        Promotion promotion = null;
+        String sql = "SELECT * FROM items WHERE barcode = ?";
 
-        String sql = "select * \n" +
-                "  from items i,items_promotions ip \n" +
-                " where i.id = ip.itemId and barcode='"+barcode+"'";
-        Connection connection = connectionUtil.getConnection();
-        Statement statement = null;
-        ResultSet rs = null;
-        try {
-            statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
+        Item item = null;
+        Connection conn = connectionUtil.getConnection();
+        try{
+            prepareStatement = conn.prepareStatement(sql);
+            prepareStatement.setString(1, barcode);
+            rs = prepareStatement.executeQuery();
             rs.next();
 
             item = new Item(rs.getString("id"),
