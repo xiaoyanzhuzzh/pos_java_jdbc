@@ -11,34 +11,6 @@ public class ItemDaoImple implements ItemDao {
 
     ConnectionUtil connectionUtil = new ConnectionUtil();
     private PromotionDao promotionDao = new PromotionDaoImple();
-    @Override
-    public Item getItemById(int id) {
-        Item item = null;
-        String sql = "SELECT * FROM items WHERE id = '"+id+"'";
-        Connection connection = connectionUtil.getConnection();
-        Statement statement = null;
-        ResultSet rs = null;
-
-        try {
-            statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
-            rs.next();
-
-            item = new Item(rs.getString("id"),
-                    rs.getString("barcode"),
-                    rs.getString("name"),
-                    rs.getString("unit"),
-                    rs.getDouble("price"),
-                    rs.getString("categoryId"));
-
-            rs.close();
-            statement.close();
-            connectionUtil.closeConnection();
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return item;
-    }
 
     @Override
     public Item getItemByBarcode(String barcode){
@@ -104,6 +76,7 @@ public class ItemDaoImple implements ItemDao {
                         rs.getDouble("price"),
                         rs.getString("categoryId")
                 ));
+
             }
             rs.close();
             statement.close();
@@ -112,73 +85,5 @@ public class ItemDaoImple implements ItemDao {
             e.printStackTrace();
         }
         return items;
-    }
-
-    @Override
-    public void insertItem(Item item) {
-        String sql = "insert into items values(null, '"+item.getBarcode()+
-                "','"+item.getName()+"','"+item.getUnit()+"', "+item.getPrice()+")";
-        Connection connection = connectionUtil.getConnection();
-        Statement statement = null;
-        try {
-            statement = connection.createStatement();
-            int result = statement.executeUpdate(sql);
-            if(result > 0){
-                System.out.println("插入成功");
-            }
-            else{
-                System.out.println("插入失败");
-            }
-            statement.close();
-            connectionUtil.closeConnection();
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void deleteItemById(int id) {
-        String sql = "delete from items where id = '"+id+"'";
-        Connection connection = connectionUtil.getConnection();
-        Statement statement = null;
-        try {
-            statement = connection.createStatement();
-
-            int result = statement.executeUpdate(sql);
-            if(result > 0){
-                System.out.println("删除成功");
-            }
-            else{
-                System.out.println("删除失败");
-            }
-            statement.close();
-            connectionUtil.closeConnection();
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void updateItem(Item item) {
-        String sql = "update items set barcode = '"+item.getBarcode()+"', name = '"+item.getName()
-                +"',unit = '"+item.getUnit()+"' ,price = '"+item.getPrice()
-                +"' where id = '"+item.getId()+"'";
-        Connection connection = connectionUtil.getConnection();
-        Statement statement = null;
-        try {
-            statement = connection.createStatement();
-
-            int result = statement.executeUpdate(sql);
-            if(result > 0){
-                System.out.println("更新成功");
-            }
-            else{
-                System.out.println("更新失败");
-            }
-            statement.close();
-            connectionUtil.closeConnection();
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
