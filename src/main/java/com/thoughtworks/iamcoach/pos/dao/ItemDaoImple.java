@@ -33,24 +33,13 @@ public class ItemDaoImple implements ItemDao {
                     rs.getDouble("price"),
                     rs.getString("categoryId")
             );
-
-            promotion = promotionDao.getPromotionById(rs.getString("proId"));
-            if(rs.getString("proId").equals("3")){
-                promotion.setDiscount(promotionDao.getDiscount());
-            }
-            item.getPromotionList().add(promotion);
-
-            while(rs.next()){
-                promotion = promotionDao.getPromotionById(rs.getString("proId"));
-                item.getPromotionList().add(promotion);
-            }
             rs.close();
-            statement.close();
+            prepareStatement.close();
             connectionUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return item;
+        return item;n
     }
 
     @Override
@@ -96,7 +85,7 @@ public class ItemDaoImple implements ItemDao {
 
         try {
             prepareStatement = connection.prepareStatement(sql);
-            prepareStatement.setString(1,id);
+            prepareStatement.setString(1, id);
 
             rs = prepareStatement.executeQuery();
             while(rs.next()){
@@ -109,6 +98,7 @@ public class ItemDaoImple implements ItemDao {
 
                 promotions.add(promotion);
             }
+
             rs.close();
             prepareStatement.close();
             connectionUtil.closeConnection();
